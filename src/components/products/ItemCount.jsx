@@ -6,15 +6,13 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
   const handleIncrease = () => {
     if (count < stock) {
-      const newValue = count + 1;
-      setCount(newValue);
+      setCount(count + 1);
     }
   };
 
   const handleDecrease = () => {
     if (count > 1) {
-      const newValue = count - 1;
-      setCount(newValue);
+      setCount(count - 1);
     }
   };
 
@@ -25,12 +23,14 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
   if (added) {
     return (
-      <div className="d-flex flex-column align-items-center gap-3 mt-3">
-        <p className="text-purple fw-bold">Producto agregado al carrito ✅</p>
-        <a href="/cart" className="btn btn-primary-nouveau">
+      <div className="d-flex flex-column align-items-center gap-3 mt-4">
+        <p className="text-purple fw-bold">
+          Producto agregado al carrito ✅
+        </p>
+        <a href="/cart" className="btn btn-dark w-100">
           Ir al carrito
         </a>
-        <a href="/" className="btn btn-secondary-nouveau">
+        <a href="/" className="btn btn-outline-dark w-100">
           Seguir comprando
         </a>
       </div>
@@ -38,31 +38,41 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
   }
 
   return (
-    <div className="d-flex flex-column align-items-center gap-3">
+    <div className="d-flex flex-column align-items-center gap-3 mt-4">
+      {/* Controles de cantidad */}
       <div className="d-flex justify-content-center align-items-center gap-3">
         <button
-          className="btn btn-secondary-nouveau"
+          className="btn btn-outline-dark"
           onClick={handleDecrease}
           disabled={count <= 1}
         >
           -
         </button>
-        <span className="fw-bold text-purple">{count}</span>
+        <span className="fw-bold text-purple fs-5">{count}</span>
         <button
-          className="btn btn-secondary-nouveau"
+          className="btn btn-outline-dark"
           onClick={handleIncrease}
           disabled={count >= stock}
         >
           +
         </button>
       </div>
+
+      {/* Botón agregar */}
       <button
-        className="btn btn-primary-nouveau mt-3"
+        className="btn btn-dark w-100 mt-3"
         onClick={handleAddToCart}
         disabled={stock === 0}
       >
         Agregar al carrito
       </button>
+
+      {/* Mensaje si no hay stock */}
+      {stock === 0 && (
+        <p className="text-danger fw-bold mt-2">
+          Producto sin stock disponible
+        </p>
+      )}
     </div>
   );
 };

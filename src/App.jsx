@@ -1,6 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Contexto
+import { CartProvider } from "./context/CartContext";
+
 // Layout
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
@@ -21,7 +24,7 @@ import Checkout from "./components/checkout/Checkout";
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <NavBar />
       <main>
         <Routes>
@@ -47,9 +50,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

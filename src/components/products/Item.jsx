@@ -9,19 +9,27 @@ const formatPrice = (price) =>
 
 const Item = ({ product }) => {
   return (
-    <div className="col-md-4 mb-3">
-      <div className="card h-100">
-        <div className="card-body d-flex flex-column">
-          <h5 className="card-title">{product.name}</h5>
-          <p className="card-text">{product.description}</p>
-          <p className="card-text">
-            <strong>Precio:</strong> {formatPrice(product.price)}
-          </p>
-          <div className="mt-auto">
-            <Link to={`/item/${product.id}`} className="btn btn-dark w-100">
-              Ver detalle
-            </Link>
-          </div>
+    <div className="card h-100">
+      {/* Imagen del producto */}
+      <img
+        src={product.img}
+        alt={product.name}
+        className="card-img-top"
+      />
+
+      {/* Contenido de la card */}
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title text-purple fw-bold">{product.name}</h5>
+        <p className="card-text">{product.description}</p>
+        <p className="card-text">
+          <strong>Precio:</strong> {formatPrice(product.price)}
+        </p>
+
+        {/* Botón de detalle */}
+        <div className="mt-auto">
+          <Link to={`/item/${product.id}`} className="btn btn-dark w-100">
+            Ver detalle
+          </Link>
         </div>
       </div>
     </div>

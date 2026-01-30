@@ -16,8 +16,7 @@ const CheckoutForm = ({ onConfirm }) => {
     e.preventDefault();
 
     if (form.email !== form.confirmEmail) {
-      alert("Los correos electrónicos no coinciden");
-      return;
+      return; // no envía si los correos no coinciden
     }
 
     onConfirm({
@@ -25,6 +24,9 @@ const CheckoutForm = ({ onConfirm }) => {
       email: form.email,
       phone: form.phone,
     });
+
+    // limpiar formulario
+    setForm({ name: "", email: "", confirmEmail: "", phone: "" });
   };
 
   return (
@@ -63,9 +65,12 @@ const CheckoutForm = ({ onConfirm }) => {
         placeholder="Repite tu correo electrónico"
         value={form.confirmEmail}
         onChange={handleChange}
-        className="form-control mb-3"
+        className="form-control mb-1"
         required
       />
+      {form.email && form.confirmEmail && form.email !== form.confirmEmail && (
+        <p className="text-danger fw-bold">Los correos electrónicos no coinciden</p>
+      )}
 
       <label htmlFor="phone" className="fw-bold text-purple">Teléfono</label>
       <input
