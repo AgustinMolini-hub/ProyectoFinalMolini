@@ -1,11 +1,16 @@
-/* Fondo general */
+/* Fondo global */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #F3E5F5 !important; /* lila suave */
-  color: #212121 !important;
+  background: linear-gradient(45deg, #000000, #8a2be2) !important;
+  color: #ffffff !important;
   font-family: 'Arial', sans-serif;
+}
+
+/* Root y main transparentes */
+#root, main {
+  background: transparent !important;
 }
 
 /* Contenedor principal */
@@ -17,53 +22,26 @@ html, body {
 
 main {
   flex: 1;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Navbar y Footer en negro puro */
-.navbar.bg-dark,
-footer.bg-dark {
-  background-color: #000000 !important;
-  color: #FFFFFF !important;
-}
-
-/* Cards */
-.card {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E1BEE7 !important; /* borde lila claro */
-}
-
-/* Botones */
-.btn-dark {
-  background-color: #6A1B9A !important; /* púrpura intenso */
+/* Navbar con bloque morado sólido */
+.navbar.custom-navbar {
+  color: #ffffff !important;
   border: none !important;
-}
-
-.btn-dark:hover {
-  background-color: #4A148C !important; /* violeta oscuro */
-}
-
-.btn-outline-dark {
-  border-color: #9C27B0 !important; /* morado medio */
-  color: #6A1B9A !important;
-}
-
-.btn-outline-dark:hover {
-  background-color: #9C27B0 !important;
-  color: #FFFFFF !important;
-}
- 
-/* Navbar personalizado */
-.custom-navbar {
-  background-color: #000000 !important; /* negro puro */
+  margin: 0 !important;
+  padding: 1rem 0;
 }
 
 /* Links del navbar */
 .nav-link-custom {
   transition: color 0.3s ease;
+  color: #ffffff !important;
 }
 
 .nav-link-custom:hover {
-  color: #9C27B0 !important; /* morado medio al pasar el mouse */
+  color: #E1BEE7 !important; 
 }
 
 /* Botón responsive (hamburguesa) en blanco */
@@ -75,16 +53,77 @@ footer.bg-dark {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
-/* Footer personalizado */
-.custom-footer {
-  background-color: #000000 !important; /* negro puro */
+/* Footer transparente sobre el gradiente */
+footer.custom-footer {
+  background: none !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 1rem 0;
+}
+
+/* Contenedor de íconos en el footer */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* separación uniforme entre íconos */
 }
 
 /* Links del footer */
 .footer-link {
   transition: color 0.3s ease;
+  color: #ffffff !important;
+  font-size: 1.5rem; /* íconos más grandes */
 }
 
 .footer-link:hover {
-  color: #9C27B0 !important; /* morado medio al pasar el mouse */
+  color: #9C27B0 !important; 
+}
+
+/* Cards: blancas para destacar sobre el gradiente */
+.card {
+  background-color: #ffffff !important;
+  border: 1px solid #8a2be2 !important; 
+  color: #212121 !important; 
+}
+
+/* Botones principales */
+.btn-dark {
+  background-color: #6A1B9A !important; 
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.btn-dark:hover {
+  background-color: #4A148C !important; 
+}
+
+.btn-outline-dark {
+  border-color: #9C27B0 !important; 
+  color: #9C27B0 !important;
+}
+
+.btn-outline-dark:hover {
+  background-color: #9C27B0 !important;
+  color: #ffffff !important;
+}
+
+/* Botón del carrito */
+.cart-widget-btn {
+  background-color: #6A1B9A !important; 
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.cart-widget-btn:hover {
+  background-color: #4A148C !important; 
+  color: #ffffff !important;
+}
+
+/* Badge del carrito */
+.cart-badge {
+  background-color: #9C27B0 !important; 
+  color: #ffffff !important;
+  font-weight: bold;
 }

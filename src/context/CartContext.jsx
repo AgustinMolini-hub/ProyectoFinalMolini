@@ -1,47 +1,48 @@
-
 import { createContext, useState } from "react";
 
+// Creamos el contexto
 export const CartContext = createContext();
 
+// Proveedor del contexto
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Agregar producto al carrito
-  const addItem = (product, quantity) => {
-    const existing = cart.find((item) => item.id === product.id);
-    if (existing) {
+  //  Agregar producto al carrito
+  const addItem = (item, quantity) => {
+    const existingItem = cart.find((prod) => prod.id === item.id);
+
+    if (existingItem) {
+      // Si ya existe, sumamos la cantidad
       setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
+        cart.map((prod) =>
+          prod.id === item.id
+            ? { ...prod, quantity: prod.quantity + quantity }
+            : prod
         )
       );
     } else {
-      setCart([...cart, { ...product, quantity }]);
+      // Si no existe, lo agregamos
+      setCart([...cart, { ...item, quantity }]);
     }
   };
 
-  // Eliminar producto por id
+  //  Eliminar producto por ID
   const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(cart.filter((prod) => prod.id !== id));
   };
 
-  // Vaciar carrito
+  //  Vaciar carrito
   const clearCart = () => setCart([]);
 
-  // Total de unidades
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-  // Precio total
+  //  Calcular precio total
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, prod) => acc + prod.price * prod.quantity,
     0
   );
 
   return (
     <CartContext.Provider
-      value={{ cart, addItem, removeItem, clearCart, totalItems, totalPrice }}
+      value={{ cart, addItem, removeItem, clearCart, totalPrice }}
     >
       {children}
     </CartContext.Provider>

@@ -1,43 +1,40 @@
 import { useState } from "react";
 
-function ItemCount({ initial = 1, stock = 10, onAdd }) {
-  const [count, setCount] = useState(initial);
+const ItemCount = ({ value = 1, onChange }) => {
+  const [count, setCount] = useState(value);
 
-  const increase = () => {
-    if (count < stock) setCount(count + 1);
+  const handleIncrease = () => {
+    const newValue = count + 1;
+    setCount(newValue);
+    onChange(newValue); //  actualiza el estado en ItemDetail
   };
 
-  const decrease = () => {
-    if (count > 1) setCount(count - 1);
-  };
-
-  const handleAdd = () => {
-    if (onAdd) {
-      onAdd(count);
+  const handleDecrease = () => {
+    if (count > 1) {
+      const newValue = count - 1;
+      setCount(newValue);
+      onChange(newValue); //  actualiza el estado en ItemDetail
     }
   };
 
   return (
-    <div className="d-flex align-items-center mt-3">
-      {/* Botón disminuir */}
-      <button onClick={decrease} className="btn btn-secondary-nouveau">
+    <div className="d-flex justify-content-center align-items-center gap-3">
+      <button
+        className="btn btn-secondary-nouveau"
+        onClick={handleDecrease}
+        disabled={count <= 1}
+      >
         -
       </button>
-
-      {/* Contador */}
-      <span className="mx-3 fw-bold text-purple">{count}</span>
-
-      {/* Botón aumentar */}
-      <button onClick={increase} className="btn btn-secondary-nouveau">
+      <span className="fw-bold text-purple">{count}</span>
+      <button
+        className="btn btn-secondary-nouveau"
+        onClick={handleIncrease}
+      >
         +
-      </button>
-
-      {/* Botón agregar */}
-      <button onClick={handleAdd} className="btn btn-primary-nouveau ms-4">
-        Agregar al carrito
       </button>
     </div>
   );
-}
+};
 
 export default ItemCount;

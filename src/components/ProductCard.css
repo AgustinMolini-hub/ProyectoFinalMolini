@@ -1,0 +1,47 @@
+/* Estilos para las tarjetas de productos */
+.card {
+  background-color: #ffffff; /* fondo blanco para destacar sobre el gradiente */
+  border: 2px solid #8a2be2; /* borde violeta */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4); /* sombra violeta */
+}
+
+/* Imagen del producto */
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Título */
+.card-title {
+  color: #000000; /* negro para contraste */
+  font-weight: bold;
+}
+
+/* Descripción */
+.card-text {
+  color: #444444;
+}
+
+/* Precio */
+.text-purple {
+  color: #8a2be2 !important; /* violeta consistente */
+}
+
+/* Botón dentro de la card */
+.card .btn-dark {
+  background-color: #6A1B9A !important; /* púrpura intenso */
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.card .btn-dark:hover {
+  background-color: #4A148C !important; /* violeta oscuro */
+  color: #ffffff !important;
+}

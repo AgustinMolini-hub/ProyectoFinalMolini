@@ -1,10 +1,12 @@
-import Item from "./Item";  
+import ProductCard from "./ProductCard";
 
 function ItemList({ products }) {
   return (
     <div className="row">
       {products.map((prod) => (
-        <Item key={prod.id} product={prod} />
+        <div key={prod.id} className="col-md-4">
+          <ProductCard product={prod} />
+        </div>
       ))}
     </div>
   );
