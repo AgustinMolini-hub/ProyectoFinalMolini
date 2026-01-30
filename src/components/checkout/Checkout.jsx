@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import CheckoutForm from "./CheckoutForm";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { Link } from "react-router-dom";
-import { formatPrice } from "../../utils/formatPrice"; //  importamos el helper
+import { formatPrice } from "../../utils/formatPrice";
 
 const Checkout = () => {
   const { cart, totalPrice, clearCart } = useContext(CartContext);
@@ -14,8 +14,8 @@ const Checkout = () => {
     const order = {
       buyer: userData,
       items: cart,
-      total: totalPrice,
-      date: new Date(),
+      total: totalPrice(), // ✅ función
+      date: Timestamp.fromDate(new Date()), // ✅ fecha Firestore
     };
 
     try {
@@ -27,6 +27,18 @@ const Checkout = () => {
     }
   };
 
+  // Validación carrito vacío
+  if (cart.length === 0 && !orderId) {
+    return (
+      <div className="container my-5 text-center">
+        <h2 className="text-purple fw-bold">Tu carrito está vacío</h2>
+        <Link to="/" className="btn btn-primary-nouveau mt-3">
+          Volver al catálogo
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="container my-5">
       {orderId ? (
@@ -36,7 +48,7 @@ const Checkout = () => {
             Tu número de orden es: <strong>{orderId}</strong>
           </p>
           <p className="fw-bold text-purple">
-            Total pagado: {formatPrice(totalPrice)} {/*  helper aplicado */}
+            Total pagado: {formatPrice(totalPrice())}
           </p>
           <Link to="/" className="btn btn-primary-nouveau mt-3">
             Volver al catálogo

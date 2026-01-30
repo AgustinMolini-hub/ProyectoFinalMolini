@@ -8,12 +8,16 @@ const CartItem = ({ item, removeItem }) => {
           <h5 className="text-purple fw-bold mb-1">{item.name}</h5>
           <p className="mb-1">Cantidad: {item.quantity}</p>
           <p className="mb-0 fw-bold">
-            Precio: {formatPrice(item.price)} {/*  helper aplicado */}
+            Precio unitario: {formatPrice(item.price)}
+          </p>
+          <p className="mb-0">
+            Subtotal: {formatPrice(item.price * item.quantity)}
           </p>
         </div>
         <button
           onClick={() => removeItem(item.id)}
           className="btn btn-danger"
+          aria-label={`Eliminar ${item.name} del carrito`}
         >
           Eliminar
         </button>

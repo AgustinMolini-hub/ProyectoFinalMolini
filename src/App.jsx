@@ -1,13 +1,23 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+
+// Layout
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
+import NotFound from "./components/layout/NotFound";
+
+// Home
+import HomeIntro from "./components/home/HomeIntro";
+
+// Catálogo
 import ItemListContainer from "./containers/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
-import NotFound from "./components/NotFound";
-import Footer from "./components/Footer";
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
-import HomeIntro from "./components/HomeIntro"; // importamos el nuevo componente
+
+// Carrito
+import Cart from "./components/cart/Cart";
+
+// Checkout
+import Checkout from "./components/checkout/Checkout";
 
 function App() {
   return (

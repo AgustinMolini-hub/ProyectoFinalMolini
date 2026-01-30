@@ -1,12 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 import { formatPrice } from "../utils/formatPrice";
 
 function ItemDetail({ product }) {
   const { addItem } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false); //  estado para mostrar confirmación
 
   if (!product) {
     return (
@@ -16,10 +14,9 @@ function ItemDetail({ product }) {
     );
   }
 
-  const handleAdd = () => {
+  // Función que recibe la cantidad desde ItemCount
+  const handleAdd = (quantity) => {
     addItem(product, quantity);
-    setAdded(true); // 👈 activamos el mensaje
-    setTimeout(() => setAdded(false), 2000); //  se oculta después de 2 segundos
   };
 
   return (
@@ -38,23 +35,8 @@ function ItemDetail({ product }) {
             Precio: {formatPrice(product.price)}
           </p>
 
-          {/* Selector de cantidad */}
-          <ItemCount value={quantity} onChange={setQuantity} />
-
-          {/* Botón de acción */}
-          <button
-            onClick={handleAdd}
-            className="btn btn-primary-nouveau mt-4"
-          >
-            Agregar al carrito
-          </button>
-
-          {/* Mensaje de confirmación */}
-          {added && (
-            <p className="text-success fw-bold mt-3">
-              Producto agregado al carrito
-            </p>
-          )}
+          {/* Selector de cantidad con integración al carrito */}
+          <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
         </div>
       </div>
     </div>

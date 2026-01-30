@@ -25,13 +25,23 @@ const Cart = () => {
       {cart.map((item) => (
         <CartItem key={item.id} item={item} removeItem={removeItem} />
       ))}
-      <h4 className="text-purple mt-3">Total: ${totalPrice}</h4>
-      <button onClick={clearCart} className="btn btn-secondary-nouveau mt-3">
-        Vaciar carrito
-      </button>
-      <Link to="/checkout" className="btn btn-primary-nouveau mt-3 ms-3">
-        Finalizar compra
-      </Link>
+      <h4 className="text-purple mt-3">Total: ${totalPrice()}</h4>
+      <div className="mt-3">
+        <button
+          onClick={clearCart}
+          className="btn btn-secondary-nouveau me-3"
+          aria-label="Vaciar carrito"
+        >
+          Vaciar carrito
+        </button>
+        <Link
+          to="/checkout"
+          className="btn btn-primary-nouveau"
+          aria-label="Finalizar compra"
+        >
+          Finalizar compra
+        </Link>
+      </div>
     </div>
   );
 };

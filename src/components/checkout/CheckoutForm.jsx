@@ -4,6 +4,7 @@ const CheckoutForm = ({ onConfirm }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    confirmEmail: "",
     phone: "",
   });
 
@@ -13,15 +14,27 @@ const CheckoutForm = ({ onConfirm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onConfirm(form); 
+
+    if (form.email !== form.confirmEmail) {
+      alert("Los correos electrónicos no coinciden");
+      return;
+    }
+
+    onConfirm({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+    });
   };
 
   return (
     <form onSubmit={handleSubmit} className="container my-5">
       <h2 className="text-purple fw-bold mb-4">Finalizar compra</h2>
 
+      <label htmlFor="name" className="fw-bold text-purple">Nombre completo</label>
       <input
         type="text"
+        id="name"
         name="name"
         placeholder="Nombre completo"
         value={form.name}
@@ -30,8 +43,10 @@ const CheckoutForm = ({ onConfirm }) => {
         required
       />
 
+      <label htmlFor="email" className="fw-bold text-purple">Correo electrónico</label>
       <input
         type="email"
+        id="email"
         name="email"
         placeholder="Correo electrónico"
         value={form.email}
@@ -40,8 +55,22 @@ const CheckoutForm = ({ onConfirm }) => {
         required
       />
 
+      <label htmlFor="confirmEmail" className="fw-bold text-purple">Confirmar correo electrónico</label>
+      <input
+        type="email"
+        id="confirmEmail"
+        name="confirmEmail"
+        placeholder="Repite tu correo electrónico"
+        value={form.confirmEmail}
+        onChange={handleChange}
+        className="form-control mb-3"
+        required
+      />
+
+      <label htmlFor="phone" className="fw-bold text-purple">Teléfono</label>
       <input
         type="tel"
+        id="phone"
         name="phone"
         placeholder="Teléfono"
         value={form.phone}

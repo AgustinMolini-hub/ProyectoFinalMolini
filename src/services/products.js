@@ -1,20 +1,30 @@
-const products = [
-  { id: "1", name: "Davidoff Coll Water Men EDT 200ml ", category: "Perfumes", description: "Fresco veraniego elegante", price: 180000 },
-  { id: "2", name: "Davidoff Coll Water Reborn Men EDT 125ml", category: "Perfumes", description: "Fresco renovado con un toque de Romero ", price: 135000  },
-  { id: "3", name: "Dior Sauvage Men EDT 100ml", category: "Perfumes", description: "Aroma intenso elegante y varonil", price: 270000 },
-  { id: "4", name: "Cuba Winner Men EDT 100ml", category: "Perfumes", description: "Fresco de uso diario", price: 30000  },
-  { id: "5", name: "Cuba Original Men EDT 100ml", category: "Perfumes", description: "Amaderado notas de tabaco y vainilla ", price: 35000  },
-  { id: "6", name: "Cuba VIP EDT 100ml", category: "Perfumes", description: "Aroma ligero ideal para climas cálidos y frescos", price: 39000  },
-];
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
-export const getProducts = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(products), 1000);
-  });
+// Obtener todos los productos
+export const getProducts = async () => {
+  try {
+    const productsRef = collection(db, "products");
+    const snapshot = await getDocs(productsRef);
+    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    console.error("Error al obtener productos:", error);
+    return [];
+  }
 };
 
-export const getProductById = (id) => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(products.find((p) => p.id === id)), 1000);
-  });
+// Obtener un producto por ID
+export const getProductById = async (id) => {
+  try {
+    const productRef = doc(db, "products", id);
+    const snapshot = await getDoc(productRef);
+    if (snapshot.exists()) {
+      return { id: snapshot.id, ...snapshot.data() };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error al obtener producto:", error);
+    return null;
+  }
 };

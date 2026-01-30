@@ -9,11 +9,12 @@ const CartWidget = () => {
     <Link
       to="/cart"
       className="btn btn-dark position-relative cart-widget-btn"
+      aria-label="Ver carrito"
     >
       🛒 Carrito
-      {totalItems > 0 && (
+      {totalItems() > 0 && (
         <span className="badge cart-badge position-absolute top-0 start-100 translate-middle">
-          {totalItems}
+          {totalItems()}
         </span>
       )}
     </Link>

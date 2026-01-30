@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget";
 import { getProducts } from "../../services/products";
 
@@ -8,8 +8,7 @@ const NavBar = () => {
 
   useEffect(() => {
     getProducts().then((products) => {
-      // Extrae categorías únicas
-      const uniqueCategories = [...new Set(products.map((p) => p.category))];
+      const uniqueCategories = [...new Set(products.map((p) => p.category.toLowerCase()))];
       setCategories(uniqueCategories);
     });
   }, []);
@@ -39,18 +38,18 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link nav-link-custom text-white" to="/">
+              <NavLink className="nav-link nav-link-custom text-white" to="/">
                 Inicio
-              </Link>
+              </NavLink>
             </li>
             {categories.map((cat) => (
               <li key={cat} className="nav-item">
-                <Link
+                <NavLink
                   className="nav-link nav-link-custom text-white"
                   to={`/category/${cat}`}
                 >
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
