@@ -9,13 +9,15 @@ const formatPrice = (price) =>
 
 const Item = ({ product }) => {
   return (
-    <div className="card h-100">
+    <div className="card h-100 text-center">
       {/* Imagen del producto */}
-      <img
-        src={product.img}
-        alt={product.name}
-        className="card-img-top"
-      />
+      <div className="d-flex align-items-center justify-content-center p-3">
+        <img
+          src={product.img}
+          alt={product.name}
+          className="card-img-top product-thumb"
+        />
+      </div>
 
       {/* Contenido de la card */}
       <div className="card-body d-flex flex-column">

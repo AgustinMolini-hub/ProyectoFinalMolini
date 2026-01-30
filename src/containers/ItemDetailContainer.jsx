@@ -11,6 +11,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
     getProductById(itemId).then((res) => {
+      console.log("Producto traído de Firestore:", res); //  agregado para depurar
       setProduct(res);
       setLoading(false);
     });

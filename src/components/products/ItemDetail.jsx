@@ -18,6 +18,8 @@ function ItemDetail({ product }) {
     addItem(product, quantity);
   };
 
+  console.log("Producto recibido en ItemDetail:", product);
+
   return (
     <div className="container my-5">
       <div className="card shadow-lg">
@@ -25,7 +27,7 @@ function ItemDetail({ product }) {
           {/* Imagen del producto */}
           <div className="col-md-6">
             <img
-              src={product.img}
+              src={product.imageURL}
               alt={product.name}
               className="img-fluid rounded-start"
               style={{ height: "100%", objectFit: "cover" }}
