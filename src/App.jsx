@@ -11,7 +11,7 @@ import Footer from "./components/layout/Footer";
 import NotFound from "./components/layout/NotFound";
 
 // Home
-import HomeIntro from "./components/home/HomeIntro";
+import HomeIntro from "./components/home/HomeIntro.jsx";
 
 // Catálogo
 import ItemListContainer from "./containers/ItemListContainer";
