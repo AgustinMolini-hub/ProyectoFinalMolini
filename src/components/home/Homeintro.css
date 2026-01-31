@@ -1,16 +1,71 @@
+/* Hero */
 .hero {
   position: relative;
-  height: 100vh; /* ocupa toda la pantalla */
-  background: linear-gradient(45deg, #000000, #8a2be2) !important;
-  /* negro → violeta en diagonal ↗ */
+  min-height: 70vh;
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-primary-light) 100%);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
 }
 
 .hero .content {
   position: relative;
   z-index: 2;
   max-width: 700px;
-  color: black  ; /* asegura contraste */
+  color: var(--color-text);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+}
+
+.btn-primary-nouveau {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary-nouveau:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+/* Sección "Quiénes somos" */
+.about {
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  padding: 4rem 2rem;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
 }

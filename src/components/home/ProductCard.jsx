@@ -1,24 +1,37 @@
 import { Link } from "react-router-dom";
-import "./ProductCard.css"; // Importamos los estilos de la tarjeta
+import "./ProductCard.css"; // Importamos los estilos específicos de la card
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="card shadow-sm mb-4 text-center">
+    <div className="card text-center">
       {/* Imagen del producto */}
       <img
         src={product.image}
-        className="product-thumb" // 👈 usa la clase uniforme definida en app.css
+        className="product-thumb"
         alt={product.name}
       />
 
-      {/* Contenido */}
-      <div className="card-body d-flex flex-column justify-content-between">
-        <h5 className="card-title text-purple fw-bold">{product.name}</h5>
-        <p className="card-text">{product.description}</p>
+      {/* Logo de la marca en el recuadro superior */}
+      {product.brand && (
+        <img
+          src={`/logos/${product.brand}.png`}
+          alt={`${product.brand} logo`}
+          className="brand-logo-top"
+        />
+      )}
+
+      {/* Contenido textual */}
+      <div className="card-body">
+        <h5 className="card-title">{product.name}</h5>
+
+        {/* Descripción limitada */}
+        <p className="card-description">{product.description}</p>
+
+        {/* Precio */}
         <p className="card-text text-purple fw-bold">${product.price}</p>
 
-        {/* Botón para ver detalle */}
-        <Link to={`/item/${product.id}`} className="btn btn-dark w-100 mt-auto">
+        {/* Botón de detalle */}
+        <Link to={`/item/${product.id}`} className="btn btn-dark w-100">
           Ver detalle
         </Link>
       </div>
@@ -26,4 +39,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard; 
+export default ProductCard;

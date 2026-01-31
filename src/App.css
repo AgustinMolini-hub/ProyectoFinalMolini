@@ -20,11 +20,18 @@ html, body, #root {
 main {
   flex: 1;
   display: flex;
-  justify-content: center;   /* centra horizontalmente */
-  align-items: flex-start;   /* contenido empieza arriba */
+  justify-content: center;
+  align-items: flex-start;
   background-color: var(--color-bg);
   color: var(--color-text);
   padding: 2rem;
+}
+
+/* Main especial para HomeIntro */
+.main-home {
+  flex: 1;
+  display: block;
+  padding: 0;
 }
 
 /* Navbar arriba, ancho completo */
@@ -47,7 +54,7 @@ footer {
   padding: 1rem;
 }
 
-/* Logo */
+/* Logo react */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -76,60 +83,15 @@ footer {
 /* Contenedor de productos con Flexbox */
 .products-grid {
   display: flex;
-  flex-wrap: wrap;              /* 👈 permite que las cards bajen a la siguiente fila */
-  justify-content: center;      /* 👈 centra las cards horizontalmente */
-  gap: 1.5rem;                  /* 👈 espacio uniforme entre cards */
-  max-width: 1200px;            /* ancho máximo del bloque */
-  margin: 0 auto;               /* centra el bloque */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 2rem 0;
-}
-
-/* Cards uniformes */
-.card {
-  flex: 0 1 220px;              /* 👈 ancho fijo de ~220px */
-  height: 320px;                /* 👈 alto fijo */
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  transition: border-color 0.3s ease;
-  overflow: hidden;
-}
-
-.card:hover {
-  border-color: var(--color-primary-light);
-}
-
-/* Descripción con límite de líneas */
-.card-description {
-  flex: 1;
-  font-size: 0.9rem;
-  color: var(--color-text);
-  text-align: center;
-  margin: 0.5rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;   /* máximo 3 líneas */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* Texto secundario */
 .read-the-docs {
   color: var(--color-muted);
-}
-
-/* Imagen de producto */
-.product-thumb {
-  width: 100%;
-  height: 160px;
-  object-fit: contain;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-primary);
-  margin-bottom: 0.75rem;
-  display: block;
 }

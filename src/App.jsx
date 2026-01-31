@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -30,30 +31,77 @@ function App() {
   return (
     <CartProvider>
       <NavBar />
-      <main>
-        <Routes>
-          {/* Inicio con introducción */}
-          <Route path="/" element={<HomeIntro />} />
+      <Routes>
+        {/* Inicio con introducción */}
+        <Route
+          path="/"
+          element={
+            <main className="main-home">
+              <HomeIntro />
+            </main>
+          }
+        />
 
-          {/* Catálogo completo (sin categoría) */}
-          <Route path="/category" element={<ItemListContainer />} />
+        {/* Catálogo completo */}
+        <Route
+          path="/category"
+          element={
+            <main>
+              <ItemListContainer />
+            </main>
+          }
+        />
 
-          {/* Catálogo filtrado por categoría */}
-          <Route path="/category/:categoryId" element={<ItemListContainer />} />
+        {/* Catálogo filtrado por categoría */}
+        <Route
+          path="/category/:categoryId"
+          element={
+            <main>
+              <ItemListContainer />
+            </main>
+          }
+        />
 
-          {/* Detalle de producto */}
-          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+        {/* Detalle de producto */}
+        <Route
+          path="/item/:itemId"
+          element={
+            <main>
+              <ItemDetailContainer />
+            </main>
+          }
+        />
 
-          {/* Carrito */}
-          <Route path="/cart" element={<Cart />} />
+        {/* Carrito */}
+        <Route
+          path="/cart"
+          element={
+            <main>
+              <Cart />
+            </main>
+          }
+        />
 
-          {/* Checkout */}
-          <Route path="/checkout" element={<Checkout />} />
+        {/* Checkout */}
+        <Route
+          path="/checkout"
+          element={
+            <main>
+              <Checkout />
+            </main>
+          }
+        />
 
-          {/* Página 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
+        {/* Página 404 */}
+        <Route
+          path="*"
+          element={
+            <main>
+              <NotFound />
+            </main>
+          }
+        />
+      </Routes>
       <Footer />
     </CartProvider>
   );
