@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../utils/formatPrice";
 
 const Cart = () => {
   const { cart, removeItem, clearCart, totalPrice } = useContext(CartContext);
@@ -22,14 +23,19 @@ const Cart = () => {
   return (
     <div className="container my-5">
       <h2 className="text-purple fw-bold mb-4">Tu carrito</h2>
+
       {cart.map((item) => (
         <CartItem key={item.id} item={item} removeItem={removeItem} />
       ))}
-      <h4 className="text-purple mt-3">Total: ${totalPrice()}</h4>
-      <div className="mt-3">
+
+      <h4 className="text-purple mt-3">
+        Total: {formatPrice(totalPrice())}
+      </h4>
+
+      <div className="mt-3 d-flex gap-3">
         <button
           onClick={clearCart}
-          className="btn btn-secondary-nouveau me-3"
+          className="btn btn-outline-danger"
           aria-label="Vaciar carrito"
         >
           Vaciar carrito
@@ -40,6 +46,13 @@ const Cart = () => {
           aria-label="Finalizar compra"
         >
           Finalizar compra
+        </Link>
+        <Link
+          to="/"
+          className="btn btn-outline-dark"
+          aria-label="Seguir comprando"
+        >
+          Seguir comprando
         </Link>
       </div>
     </div>

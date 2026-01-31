@@ -2,7 +2,11 @@
 .hero {
   position: relative;
   min-height: 70vh;
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-primary-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-primary-light) 100%
+  );
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,19 +36,21 @@
   margin-bottom: 2rem;
 }
 
+/* Botón principal */
 .btn-primary-nouveau {
-  background-color: var(--color-primary);
-  color: var(--color-text);
+  background-color: var(--color-primary);   /* morado principal */
+  color: #fff;                              /* texto blanco para contraste */
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-primary-nouveau:hover {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary-light); /* tono más claro al hover */
   transform: translateY(-2px);
 }
 

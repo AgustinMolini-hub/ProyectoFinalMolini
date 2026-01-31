@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../../context/CartContext";
 import { formatPrice } from "../../utils/formatPrice";
+import { Link } from "react-router-dom";
 
 function ItemDetail({ product }) {
   const { addItem } = useContext(CartContext);
+  const [added, setAdded] = useState(false);
 
   if (!product) {
     return (
@@ -16,9 +18,8 @@ function ItemDetail({ product }) {
 
   const handleAdd = (quantity) => {
     addItem(product, quantity);
+    setAdded(true); //  cambia el estado para ocultar ItemCount
   };
-
-  console.log("Producto recibido en ItemDetail:", product);
 
   return (
     <div className="container my-5">
@@ -49,8 +50,19 @@ function ItemDetail({ product }) {
                 Precio: {formatPrice(product.price)}
               </p>
 
-              {/* Selector de cantidad */}
-              <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
+              {/* Renderizado condicional */}
+              {!added ? (
+                <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
+              ) : (
+                <div className="d-flex justify-content-center gap-3">
+                  <Link to="/cart" className="btn btn-dark">
+                    Ir al carrito
+                  </Link>
+                  <Link to="/catalogo" className="btn btn-outline-dark">
+                    Seguir comprando
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

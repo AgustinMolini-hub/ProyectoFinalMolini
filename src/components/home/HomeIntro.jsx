@@ -13,7 +13,8 @@ const HomeIntro = () => {
             Perfumes de lujo y gafas Ray‑Ban, seleccionados para quienes buscan
             sofisticación, estilo y autenticidad en cada detalle.
           </p>
-          <Link to="/category" className="btn btn-primary-nouveau btn-lg">
+          {/* Botón corregido: ahora va a /catalogo */}
+          <Link to="/catalogo" className="btn btn-primary-nouveau btn-lg">
             Explorar catálogo
           </Link>
         </div>

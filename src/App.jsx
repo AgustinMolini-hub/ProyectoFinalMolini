@@ -44,7 +44,7 @@ function App() {
 
         {/* Catálogo completo */}
         <Route
-          path="/category"
+          path="/catalogo"
           element={
             <main>
               <ItemListContainer />

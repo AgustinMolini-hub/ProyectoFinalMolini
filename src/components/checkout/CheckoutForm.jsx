@@ -8,15 +8,24 @@ const CheckoutForm = ({ onConfirm }) => {
     phone: "",
   });
 
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError(null); // limpiar error al escribir
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (form.email !== form.confirmEmail) {
-      return; // no envía si los correos no coinciden
+      setError("Los correos electrónicos no coinciden");
+      return;
+    }
+
+    if (form.phone.length < 8) {
+      setError("El teléfono debe tener al menos 8 dígitos");
+      return;
     }
 
     onConfirm({
@@ -28,6 +37,13 @@ const CheckoutForm = ({ onConfirm }) => {
     // limpiar formulario
     setForm({ name: "", email: "", confirmEmail: "", phone: "" });
   };
+
+  const isFormValid =
+    form.name &&
+    form.email &&
+    form.confirmEmail &&
+    form.phone &&
+    form.email === form.confirmEmail;
 
   return (
     <form onSubmit={handleSubmit} className="container my-5">
@@ -43,6 +59,7 @@ const CheckoutForm = ({ onConfirm }) => {
         onChange={handleChange}
         className="form-control mb-3"
         required
+        aria-label="Nombre completo"
       />
 
       <label htmlFor="email" className="fw-bold text-purple">Correo electrónico</label>
@@ -55,6 +72,7 @@ const CheckoutForm = ({ onConfirm }) => {
         onChange={handleChange}
         className="form-control mb-3"
         required
+        aria-label="Correo electrónico"
       />
 
       <label htmlFor="confirmEmail" className="fw-bold text-purple">Confirmar correo electrónico</label>
@@ -67,10 +85,8 @@ const CheckoutForm = ({ onConfirm }) => {
         onChange={handleChange}
         className="form-control mb-1"
         required
+        aria-label="Confirmar correo electrónico"
       />
-      {form.email && form.confirmEmail && form.email !== form.confirmEmail && (
-        <p className="text-danger fw-bold">Los correos electrónicos no coinciden</p>
-      )}
 
       <label htmlFor="phone" className="fw-bold text-purple">Teléfono</label>
       <input
@@ -82,9 +98,17 @@ const CheckoutForm = ({ onConfirm }) => {
         onChange={handleChange}
         className="form-control mb-3"
         required
+        aria-label="Teléfono"
       />
 
-      <button type="submit" className="btn btn-primary-nouveau">
+      {error && <p className="text-danger fw-bold">{error}</p>}
+
+      <button
+        type="submit"
+        className="btn btn-primary-nouveau"
+        disabled={!isFormValid}
+        aria-label="Confirmar compra"
+      >
         Confirmar compra
       </button>
     </form>

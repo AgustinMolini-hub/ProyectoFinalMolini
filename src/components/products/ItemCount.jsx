@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [count, setCount] = useState(initial);
-  const [added, setAdded] = useState(false);
 
   const handleIncrease = () => {
     if (count < stock) {
@@ -18,24 +17,7 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
   const handleAddToCart = () => {
     onAdd(count); // pasa la cantidad al padre (ItemDetail)
-    setAdded(true); // oculta el contador y muestra opciones
   };
-
-  if (added) {
-    return (
-      <div className="d-flex flex-column align-items-center gap-3 mt-4">
-        <p className="text-purple fw-bold">
-          Producto agregado al carrito ✅
-        </p>
-        <a href="/cart" className="btn btn-dark w-100">
-          Ir al carrito
-        </a>
-        <a href="/" className="btn btn-outline-dark w-100">
-          Seguir comprando
-        </a>
-      </div>
-    );
-  }
 
   return (
     <div className="d-flex flex-column align-items-center gap-3 mt-4">

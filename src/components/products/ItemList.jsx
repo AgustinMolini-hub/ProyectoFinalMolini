@@ -1,4 +1,5 @@
 import ProductCard from "../home/ProductCard";
+import "./ItemList.css"; // 👈 Importamos los estilos del grid
 
 function ItemList({ products }) {
   if (!products || products.length === 0) {

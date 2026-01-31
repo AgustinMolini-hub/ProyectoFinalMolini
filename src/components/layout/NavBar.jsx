@@ -42,6 +42,11 @@ const NavBar = () => {
                 Inicio
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link nav-link-custom text-white" to="/catalogo">
+                Catálogo
+              </NavLink>
+            </li>
             {categories.map((cat) => (
               <li key={cat} className="nav-item">
                 <NavLink
