@@ -1,16 +1,1 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Proyecto Final - Molini Este es mi proyecto final para el curso de React: una aplicación web de e‑commerce desarrollada como Single Page Application (SPA). La temática elegida es **perfumería y gafas de sol**, con un catálogo dinámico de productos y un flujo completo de compra. --- ## 🚀 Tecnologías utilizadas - **React** (componentes, hooks, SPA) - **React Router** (navegación sin recarga) - **Context API** (estado global del carrito) - **Firebase Firestore** (base de datos en la nube) - **Bootstrap + CSS variables** (estilado y diseño responsivo) --- ## 📌 Funcionalidades principales - **Listado de productos**: se cargan dinámicamente desde Firestore. - **Detalle de producto**: vista individual con descripción, precio y stock. - **ItemCount**: selector de cantidad con validaciones de stock. - **Carrito de compras**: muestra productos, cantidades, subtotales y total. - **Checkout**: formulario de compra con validaciones y confirmación. - **Generación de órdenes**: al confirmar la compra se crea un documento en Firestore con los datos del comprador y se descuenta stock. - **Feedback al usuario**: se muestra el ID de la orden generada y mensajes condicionales (carrito vacío, producto sin stock, etc.). --- ## 📂 Estructura de componentes - `App.jsx` - `NavBar` + `CartWidget` - `ItemListContainer` → `ItemList` → `Item` - `ItemDetailContainer` → `ItemDetail` → `ItemCount` - `Cart` → `CartItem` - `Checkout` → `CheckoutForm` --- ## 🛠 Instalación y ejecución 1. Clonar el repositorio: ```bash git clone https://github.com/AgustinMolini-hub/TuLanding1-Molini.git
