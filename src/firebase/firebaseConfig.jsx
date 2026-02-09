@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyA_lPtI11pzj-GlkFAiV63hJ0cjCGhcvUw",
+  authDomain: "nouveau-parfum.firebaseapp.com",
+  projectId: "nouveau-parfum",
+  storageBucket: "nouveau-parfum.firebasestorage.app",
+  messagingSenderId: "359279960494",
+  appId: "1:359279960494:web:14d07a7d3132bc5d02683f",
+  measurementId: "G-QM5P5PX3DH",
 };
 
 // Inicializar Firebase
